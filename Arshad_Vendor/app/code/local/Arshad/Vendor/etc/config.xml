@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Arshad_Vendor extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Arshad
+ * @package		Arshad_Vendor
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<modules>
+		<Arshad_Vendor>
+			<version>0.0.1</version>
+		</Arshad_Vendor>
+	</modules>
+	<global>
+		<resources>
+			<arshad_vendor_setup>
+				<setup>
+					<module>Arshad_Vendor</module>
+					<class>Arshad_Vendor_Model_Resource_Setup</class>
+				</setup>
+			</arshad_vendor_setup>
+		</resources>
+		<blocks>
+			<vendor>
+				<class>Arshad_Vendor_Block</class>
+			</vendor>
+		</blocks>
+		<helpers>
+			<vendor>
+				<class>Arshad_Vendor_Helper</class>
+			</vendor>
+		</helpers>
+		<models>
+			<vendor>
+				<class>Arshad_Vendor_Model</class>
+				<resourceModel>vendor_resource</resourceModel>
+			</vendor>
+			<vendor_resource>
+				<class>Arshad_Vendor_Model_Resource</class>
+				<entities>
+					<vendor>
+						<table>vendor_vendor</table>
+					</vendor>
+					<vendor_store>
+						<table>vendor_vendor_store</table>
+					</vendor_store>
+					<vendor_product>
+						<table>vendor_vendor_product</table>
+					</vendor_product>
+				</entities>
+			</vendor_resource>
+		</models>
+        <template>
+            <email>
+                <vendor_email_template translate="label" module="vendor">
+                    <label>Vendor Email</label>
+                    <file>vendor_email_template.html</file>
+                    <type>html</type>
+                </vendor_email_template>
+            </email>
+        </template>
+        <crontab>
+            <jobs>
+                <namespace_module>
+                    <schedule>
+                        <cron_expr>	* * * * * </cron_expr>
+                    </schedule>
+                    <run>
+                        <model>vendor/vendor::test</model>
+                    </run>
+                </namespace_module>
+            </jobs>
+        </crontab>
+	</global>
+	<adminhtml>
+		<layout>
+			<updates>
+				<arshad_vendor>
+					<file>arshad_vendor.xml</file>
+				</arshad_vendor>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Arshad_Vendor>
+					<files>
+						<default>Arshad_Vendor.csv</default>
+					</files>
+				</Arshad_Vendor>
+			</modules>
+		</translate>
+		<events>
+			<core_block_abstract_prepare_layout_after>
+				<observers>
+					<vendor>
+						<type>singleton</type>
+						<class>vendor/adminhtml_observer</class>
+						<method>addVendorBlock</method>
+					</vendor>
+				</observers>
+			</core_block_abstract_prepare_layout_after>
+			<catalog_product_save_after>
+				<observers>
+					<vendor>
+						<type>singleton</type>
+						<class>vendor/adminhtml_observer</class>
+						<method>saveVendorData</method>
+					</vendor>
+				</observers>
+			</catalog_product_save_after>
+		</events>
+	</adminhtml>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Arshad_Vendor before="Mage_Adminhtml">Arshad_Vendor_Adminhtml</Arshad_Vendor>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<default>
+		<vendor>
+		</vendor>
+	</default>
+</config>

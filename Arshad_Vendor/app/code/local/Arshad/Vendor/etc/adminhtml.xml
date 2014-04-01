@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Arshad_Vendor extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Arshad
+ * @package		Arshad_Vendor
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<vendor translate="title" module="vendor">
+										<title>Vendor</title>
+									</vendor>
+								</children>
+							</config>
+						</children>
+					</system>
+					<vendor translate="title" module="vendor">
+						<title>Vendor</title>
+						<children>
+							<vendor translate="title" module="vendor">
+								<title>Vendors</title>
+							</vendor>
+						</children>
+					</vendor>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+	<menu>
+		<vendor translate="title" module="vendor">
+			<title>Vendor</title>
+			<sort_order>99</sort_order>
+			<depends>
+				<module>Arshad_Vendor</module>
+		 	</depends>
+		 	<children>
+				<vendor translate="title" module="vendor">
+					<title>Vendors</title>
+					<action>adminhtml/vendor_vendor</action>
+					<sort_order>0</sort_order>
+				</vendor>
+			</children>
+		</vendor>
+	</menu>
+</config>

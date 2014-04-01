@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Arshad_Vendor extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Arshad
+ * @package		Arshad_Vendor
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+	<catalog_product_view>
+		<reference name="product.info">
+			<block type="vendor/catalog_product_list_vendor" name="product.info.vendors" as="product_vendors" template="arshad_vendor/catalog/product/list/vendor.phtml">
+				<action method="addToParentGroup"><group>detailed_info</group></action>
+				<action method="setTitle" translate="value" module="vendor"><value>Vendors</value></action>
+			</block>
+		</reference>
+	</catalog_product_view>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Arshad_Vendor extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Arshad
+ * @package		Arshad_Vendor
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+	<modules>
+		<Arshad_Vendor>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+				<Mage_Core />
+			</depends>
+		</Arshad_Vendor>
+	</modules>
+</config>

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Arshad_Vendor extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category   	Arshad
+ * @package		Arshad_Vendor
+ * @copyright  	Copyright (c) 2014
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+	<!-- Vendors grid action -->
+	<adminhtml_vendor_vendor_index>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>vendor/vendor</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="vendor/adminhtml_vendor" name="vendor" />
+		</reference>
+	</adminhtml_vendor_vendor_index>
+	<adminhtml_vendor_vendor_grid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="vendor/adminhtml_vendor_grid" name="vendor_grid"/>
+		</block>
+	</adminhtml_vendor_vendor_grid>
+	<!-- Vendor add/edit action -->
+	<adminhtml_vendor_vendor_edit>
+		<update handle="editor"/>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>vendor/vendor</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="vendor/adminhtml_vendor_edit" name="vendor_edit"></block>
+		</reference>
+		<reference name="left">
+			<block type="vendor/adminhtml_vendor_edit_tabs" name="vendor_tabs"></block>
+		</reference> 
+	</adminhtml_vendor_vendor_edit>
+	<adminhtml_vendor_vendor_catalog_product_vendors>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="vendor/adminhtml_catalog_product_edit_tab_vendor" name="product.edit.tab.vendor"/>
+			<block type="adminhtml/widget_grid_serializer" name="vendor_grid_serializer">
+				<reference name="vendor_grid_serializer">
+					<action method="initSerializerBlock">
+						<grid_block_name>product.edit.tab.vendor</grid_block_name>
+						<data_callback>getSelectedVendors</data_callback>
+						<hidden_input_name>vendors</hidden_input_name>
+						<reload_param_name>product_vendors</reload_param_name>
+					</action>
+					<action method="addColumnInputName">
+						<input_name>position</input_name>
+					</action>
+				</reference>
+			</block>
+		</block>
+	</adminhtml_vendor_vendor_catalog_product_vendors>
+	<adminhtml_vendor_vendor_catalog_product_vendorsgrid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="vendor/adminhtml_catalog_product_edit_tab_vendor" name="product.edit.tab.vendor"/>
+		</block>
+	</adminhtml_vendor_vendor_catalog_product_vendorsgrid>
+	<adminhtml_vendor_vendor_products>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="vendor/adminhtml_vendor_edit_tab_product" name="vendor.edit.tab.product"/>
+			<block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+				<reference name="product_grid_serializer">
+					<action method="initSerializerBlock">
+						<grid_block_name>vendor.edit.tab.product</grid_block_name>
+							<data_callback>getSelectedProducts</data_callback>
+							<hidden_input_name>products</hidden_input_name>
+							<reload_param_name>vendor_products</reload_param_name>
+					</action>
+					<action method="addColumnInputName">
+						<input_name>position</input_name>
+					</action>
+				</reference>
+			</block>
+		</block>
+	</adminhtml_vendor_vendor_products>
+	<adminhtml_vendor_vendor_productsgrid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="vendor/adminhtml_vendor_edit_tab_product" name="vendor.edit.tab.product"/>
+		</block>
+	</adminhtml_vendor_vendor_productsgrid>
+    <adminhtml_vendor_vendor_email>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="vendor/adminhtml_vendor_edit_tab_grid" name="email.grid"/>
+            <block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+                <reference name="grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>email.grid</grid_block_name>
+                        <data_callback>getSelectedEmail</data_callback>
+                        <hidden_input_name>links[email]</hidden_input_name>
+                        <reload_param_name>email</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_vendor_vendor_email>
+</layout>
